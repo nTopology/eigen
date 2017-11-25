@@ -6,6 +6,8 @@ target_include_directories(eigen3 INTERFACE .)
 
 target_link_libraries(eigen3 INTERFACE mkl thirdparty)
 
-target_compile_definitions(eigen3 INTERFACE
-    EIGEN_USE_MKL_ALL
-)
+if(WIN32)
+    target_compile_definitions(eigen3 INTERFACE
+        EIGEN_USE_MKL_ALL
+    )
+endif()
