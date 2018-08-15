@@ -8,6 +8,7 @@ if(WIN32)
     target_link_libraries(eigen3 INTERFACE mkl thirdparty)
     target_compile_definitions(eigen3 INTERFACE
         EIGEN_USE_MKL_ALL
+        _ENABLE_EXTENDED_ALIGNED_STORAGE # needed since Visual Studio 15.8, hopefully can remove soon
     )
 elseif(UNIX)
   target_link_libraries(eigen3 INTERFACE Threads::Threads)
